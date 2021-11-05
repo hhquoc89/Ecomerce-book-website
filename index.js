@@ -79,31 +79,105 @@ $(document).ready(function(){
         }
 
     });
+
+
+    function calculateSubtotal(){
+        let subTotal = 0;
+
+        $('.float-price').each(function(index, input){
+           subTotal +=  parseFloat(input.value);
+        });
+
+        let deal_price =$("#deal-price");
+        deal_price.html(subTotal.toFixed(2));
+    }
+
     // product qty section
     let qty_up=$(".qty .qty-up");
     let qty_down=$(".qty .qty-down");
+    let deal_price =$("#deal-price");
     // let input=$(".qty .qty-input");
     //click on qty up button
-
-
     qty_up.on('click',function(e){
-        let input=$(`.qty-input[data-id="${$(this).data("id")}"]`);
-        if(input.val() >= 1 && input.val() <= 9)
-        {
+        let item_id = $(this).data('id')
+        //let input = $('.qty_input[data-id="${item_id}"]');
 
-            input.val(function(i, old_val){
-                return ++old_val;
-            });
+        let input = $(`.qty_input[data-id="${item_id}"]`);
+        let price = $(`.product_price[data-id="${item_id}"]`);
+        let floatPrice = $(`.float-price[data-id="${item_id}"]`);
+
+    //change product price using ajax call
+    $.ajax({
+        url:"template/ajax.php",
+        type: 'post',
+        data:
+            {
+                itemid: $(this).data("id")
+            },
+        success: function (result){
+            let obj = JSON.parse(result);
+
+            let item_price = parseFloat(obj[0]['item_price']);
+
+                if(input.val() >= 1 && input.val() <= 9)
+                {
+                    input.val(function(i, old_val){
+                        return ++old_val;
+                    });
+                }
+                // increase price of the product
+                price.text(parseFloat(item_price * parseFloat(input.val())).toFixed(2));
+                floatPrice.val(item_price * parseFloat(input.val()));
+                // set subtotal price
+                let subtotal = parseFloat(deal_price.text()) + parseFloat(item_price);
+                //deal_price.text(subtotal.toFixed(2));
+                calculateSubtotal();
         }
+    }); // closing ajax request
+
+
+
     });
     qty_down.on('click',function(e){
-        let input=$(`.qty-input[data-id='${$(this).data("id")}']`);
-        if(input.val() > 1 && input.val() <= 10)
-        {
+        let item_id = $(this).data('id')
+        //let input = $('.qty_input[data-id="${item_id}"]');
 
-            input.val(function(i, old_val){
-                return --old_val;
-            });
-        }
+        let input = $(`.qty_input[data-id="${item_id}"]`);
+        let price = $(`.product_price[data-id="${item_id}"]`);
+        let floatPrice = $(`.float-price[data-id="${item_id}"]`);
+
+        //change product price using ajax call
+        $.ajax({
+            url:"template/ajax.php",
+            type: 'post',
+            data:
+                {
+                    itemid: $(this).data("id")
+                },
+            success: function (result){
+                let obj = JSON.parse(result);
+
+                let item_price = parseFloat(obj[0]['item_price']);
+
+                if(input.val() > 1 && input.val() <= 10)
+                {
+
+                    input.val(function(i, old_val){
+                        return --old_val;
+                    });
+                }
+                // increase price of the product
+                price.text(parseFloat(item_price * parseFloat(input.val())).toFixed(2));
+                floatPrice.val(item_price * parseFloat(input.val()));
+                // set subtotal price
+                let subtotal = parseFloat(deal_price.text()) + parseFloat(item_price);
+                //deal_price.text(subtotal.toFixed(2));
+                calculateSubtotal();
+            }
+        }); // closing ajax request
+
     });
+
 });
+
+

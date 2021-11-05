@@ -5,57 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="541a8bee-0283-45ee-a044-71f58611778d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Template/banner_ads.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Template/banner_area.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Template/blogs.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Template/cart.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Template/new_books.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Template/product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Template/special_price.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Template/top_sale.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/banner-bg-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/banner-bg-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/banner-bg-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/blog-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/blog-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/blog-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/blog-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/blog-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book-9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/book7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/deal-img.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/free-shipping-all-orders-text-banner_185004-167.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/letter-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/loader-img.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/pic-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/pic-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/pic-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/pic-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/pic-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/pic-6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/stand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/worldmap.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/DBController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/ebook.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/func.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/special_price.php" beforeDir="false" afterPath="$PROJECT_DIR$/Template/special_price.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/top_sale.php" beforeDir="false" afterPath="$PROJECT_DIR$/Template/top_sale.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ebook.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/ebook.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/func.php" beforeDir="false" afterPath="$PROJECT_DIR$/func.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,11 +42,11 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -119,7 +74,10 @@
       <option name="presentableId" value="Default" />
       <updated>1635733602279</updated>
       <workItem from="1635733604390" duration="11334000" />
-      <workItem from="1635832935871" duration="5215000" />
+      <workItem from="1635832935871" duration="14428000" />
+      <workItem from="1635906234318" duration="19000" />
+      <workItem from="1635906255618" duration="27000" />
+      <workItem from="1635906305213" duration="15000" />
     </task>
     <servers />
   </component>

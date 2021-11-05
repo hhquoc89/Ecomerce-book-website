@@ -37,10 +37,8 @@
 <body>
 <!-- Start #header -->
 <header id='header'>
-    <div class="strip d-flex justify-content-between px-4 py-1 bg-light">
-        <p class="font-rale font-size-12 text-black-50 m-0">Complete312 Mobile S5452hopee E-Commerce Website Course
-            - PHP & MySQL</p>
-        <div class="font-rale font-size-14">
+    <div class="strip d-flex flex-row-reverse px-4 py-1 bg-light">
+        <div class="font-rale font-size-14 ">
             <a href="#" class="px-3 border-right border-left text-dark">Login</a>
             <a href="#" class="px-3 border-right text-dark">Whishlist (0)</a>
         </div>
@@ -51,7 +49,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Ebook</a>
+            <a class="navbar-brand" href="index.php">Ebook</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -80,9 +78,9 @@
 
                 </ul>
                 <form action="#" class="font-size-14 font-rale">
-                    <a href="#" class="py-2 rounded-pill color-primary-bg">
+                    <a href="cart.php" class="py-2 rounded-pill color-primary-bg">
                         <span class="font-size-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
-                        <span class="px-3 py-2 rounded-pill text-dark bg-light">0</span>
+                        <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product->getData('cart')); ?></span>
                     </a>
                 </form>
             </div>

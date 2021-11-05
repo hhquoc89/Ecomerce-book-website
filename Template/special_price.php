@@ -1,21 +1,40 @@
 <!-- Start Special Price -->
+<?php
+    $brand = array_map(function ($pro){return $pro['item_brand'];},$product_shuffle);
+    //print_r($brand); test
+    $unique = array_unique($brand);
+    sort($unique);
+    //print_r($unique); test
+    shuffle($product_shuffle);
+    // request method post
+    if($_SERVER['REQUEST_METHOD']=="POST") {
+        if (isset($_POST['special_price_submit'])) {
+            // cal method addToCart
+            $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
+        }
+    }$in_cart= $Cart->getCartId($product->getData('cart')) ?? [];
+?>
+
 <section id="special-price">
     <div class="container">
         <h4 class="font-rubik font-size-20">Special Price</h4>
         <div id="filters" class="button-group text-end font-baloo font-size-16">
             <button class="btn is-checked" data-filter="*">All books</button>
-            <button class="btn" data-filter=".politics-law">Politics-Law</button>
-            <button class="btn" data-filter=".science">Science</button>
-            <button class="btn" data-filter=".cultural-history">Cultural-History</button>
+            <?php
+                 array_map(function ($brand){
+                    printf('<button class="btn" data-filter=".%s">%s</button>', $brand, $brand);
+                 }, $unique);
+            ?>
         </div>
 
         <div class="grid">
-            <div class="grid-item politics-law border">
+            <?php array_map(function ($item) use ($in_cart){?>
+            <div class="grid-item border <?php echo $item['item_brand'] ?? "Brand"; ?>">
                 <div class="item py-2" style="width: 235px;">
                     <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-1.png" alt="product1" class='img-fluid'></a>
+                        <a href="<?php printf('%s?item_id=%s', 'product.php',  $item['item_id']); ?>"><img src="<?php echo $item['item_image'] ?? "./assets/book-1.png";?>" alt="product1" class='img-fluid'></a>
                         <div class="text-center">
-                            <h6>Book 1</h6>
+                            <h6><?php echo $item['item_name'] ?? "Unknown"; ?></h6>
                             <div class="rating text-warning font-size-12">
                                 <span class="fas fa-star "></i></span>
                                 <span class="fas fa-star "></i></span>
@@ -24,203 +43,24 @@
                                 <span class="far fa-star "></i></span>
                             </div>
                             <div class="price py-2">
-                                <span>152.000</span>
+                                <span>$<?php echo $item['item_price'] ?? 0?></span>
                             </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            <form method="post">
+                                <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? '1'; ?>">
+                                <input type="hidden" name="user_id" value="<?php echo 1; ?>">
+                                <?php
+                                if (in_array($item['item_id'], $in_cart ?? [])){
+                                    echo '<button type="submit" disabled class="btn btn-success font-size-12">In the Cart</button>';
+                                }else{
+                                    echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-12">Add to Cart</button>';
+                                }
+                                ?>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="grid-item politics-law border">
-                <div class="item py-2" style="width: 235px;">
-                    <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-2.png" alt="product1" class='img-fluid'></a>
-                        <div class="text-center">
-                            <h6>Book 2</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="far fa-star "></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>152.000</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item politics-law border">
-                <div class="item py-2" style="width: 235px;">
-                    <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-3.png" alt="product1" class='img-fluid'></a>
-                        <div class="text-center">
-                            <h6>Book 3</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="far fa-star "></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>152.000</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item science border">
-                <div class="item py-2" style="width: 235px;">
-                    <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-4.png" alt="product1" class='img-fluid'></a>
-                        <div class="text-center">
-                            <h6>Book 4</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="far fa-star "></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>152.000</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item science border">
-                <div class="item py-2" style="width: 235px;">
-                    <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-5.png" alt="product1" class='img-fluid'></a>
-                        <div class="text-center">
-                            <h6>Book 5</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="far fa-star "></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>152.000</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item science border">
-                <div class="item py-2" style="width: 235px;">
-                    <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-6.png" alt="product1" class='img-fluid'></a>
-                        <div class="text-center">
-                            <h6>Book 6</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="far fa-star "></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>152.000</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item science border">
-                <div class="item py-2" style="width: 235px;">
-                    <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-7.png" alt="product1" class='img-fluid'></a>
-                        <div class="text-center">
-                            <h6>Book 7</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="far fa-star "></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>152.000</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item cultural-history border">
-                <div class="item py-2" style="width: 235px;">
-                    <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-8.png" alt="product1" class='img-fluid'></a>
-                        <div class="text-center">
-                            <h6>Book 8</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="far fa-star "></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>152.000</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item cultural-history border">
-                <div class="item py-2" style="width: 235px;">
-                    <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-9.png" alt="product1" class='img-fluid'></a>
-                        <div class="text-center">
-                            <h6>Book 9</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="far fa-star "></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>152.000</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item cultural-history border">
-                <div class="item py-2" style="width: 235px;">
-                    <div class="product font-rale">
-                        <a href="#"><img src="./assets/book-10.png" alt="product1" class='img-fluid'></a>
-                        <div class="text-center">
-                            <h6>Book 10</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="fas fa-star "></i></span>
-                                <span class="far fa-star "></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>152.000</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <?php },$product_shuffle)?>
         </div>
     </div>
 </section>

@@ -1,16 +1,28 @@
 
 <!-- New Book -->
+        <?php
+
+        shuffle($product_shuffle);
+        // request method post
+        if($_SERVER['REQUEST_METHOD']=="POST") {
+            if (isset($_POST['new_book_submit'])) {
+                // cal method addToCart
+                $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
+            }
+        }
+        ?>
 		<section id="new-books">
 			<div class="container">
 				<h4 class="font-rubik font-size-20">New Books</h4>
 				<hr>
 				<!-- Start Owl-carousel -->
 				<div class="owl-carousel owl-theme">
+                    <?php foreach ($product_shuffle as $item) {?>
 					<div class="item py-2 bg-light">
 						<div class="product font-rale">
-							<a href="#"><img src="./assets/book-1.png" alt="product1" class='img-fluid'></a>
+                            <a href="<?php printf('%s?item_id=%s', 'product.php',  $item['item_id']); ?>"><img src="<?php echo $item['item_image'] ?? "./assets/book-1.png";?>" alt="product1" class='img-fluid'></a>
 							<div class="text-center">
-								<h6>Book 1</h6>
+								<h6><?php echo  $item['item_name'] ?? "Unknown";  ?></h6>
 								<div class="rating text-warning font-size-12">
 									<span class="fas fa-star "></i></span>
 									<span class="fas fa-star "></i></span>
@@ -19,145 +31,23 @@
 									<span class="far fa-star "></i></span>
 								</div>
 								<div class="price py-2">
-									<span>152.000</span>
+									<span>$<?php echo $item['item_price'] ?? '0' ; ?></span>
 								</div>
-								<button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-							</div>
+                                <form method="post">
+                                    <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? '1';?>">
+                                    <input type="hidden" name="user_id" value="<?php echo 1;?>">
+                                    <?php
+                                    if (in_array($item['item_id'], $Cart->getCartId($product->getData('cart')) ?? [])){
+                                        echo '<button type="submit" disabled class="btn btn-success font-size-12">In the Cart</button>';
+                                    }else{
+                                        echo '<button type="submit" name="new_book_submit" class="btn btn-warning font-size-12">Add to Cart</button>';
+                                    }
+                                    ?>
+                                </form>
+                            </div>
 						</div>
 					</div>
-					<div class="item py-2 bg-light">
-						<div class="product font-rale">
-							<a href="#"><img src="./assets/book-2.png" alt="product2" class='img-fluid'></a>
-							<div class="text-center">
-								<h6>Book 2</h6>
-								<div class="rating text-warning font-size-12">
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="far fa-star "></i></span>
-								</div>
-								<div class="price py-2">
-									<span>152.000</span>
-								</div>
-								<button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-							</div>
-						</div>
-					</div>
-					<div class="item py-2 bg-light">
-						<div class="product font-rale">
-							<a href="#"><img src="./assets/book-3.png" alt="product1" class='img-fluid'></a>
-							<div class="text-center">
-								<h6>Book 3</h6>
-								<div class="rating text-warning font-size-12">
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="far fa-star "></i></span>
-								</div>
-								<div class="price py-2">
-									<span>152.000</span>
-								</div>
-								<button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-							</div>
-						</div>
-					</div>
-					<div class="item py-2 bg-light">
-						<div class="product font-rale">
-							<a href="#"><img src="./assets/book-1.png" alt="product1" class='img-fluid'></a>
-							<div class="text-center">
-								<h6>Book 1</h6>
-								<div class="rating text-warning font-size-12">
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="far fa-star "></i></span>
-								</div>
-								<div class="price py-2">
-									<span>152.000</span>
-								</div>
-								<button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-							</div>
-						</div>
-					</div>
-					<div class="item py-2 bg-light">
-						<div class="product font-rale">
-							<a href="#"><img src="./assets/book-1.png" alt="product1" class='img-fluid'></a>
-							<div class="text-center">
-								<h6>Book 1</h6>
-								<div class="rating text-warning font-size-12">
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="far fa-star "></i></span>
-								</div>
-								<div class="price py-2">
-									<span>152.000</span>
-								</div>
-								<button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-							</div>
-						</div>
-					</div>
-					<div class="item py-2 bg-light">
-						<div class="product font-rale">
-							<a href="#"><img src="./assets/book-1.png" alt="product1" class='img-fluid'></a>
-							<div class="text-center">
-								<h6>Book 1</h6>
-								<div class="rating text-warning font-size-12">
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="far fa-star "></i></span>
-								</div>
-								<div class="price py-2">
-									<span>152.000</span>
-								</div>
-								<button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-							</div>
-						</div>
-					</div>
-					<div class="item py-2 bg-light">
-						<div class="product font-rale">
-							<a href="#"><img src="./assets/book-1.png" alt="product1" class='img-fluid'></a>
-							<div class="text-center">
-								<h6>Book 1</h6>
-								<div class="rating text-warning font-size-12">
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="far fa-star "></i></span>
-								</div>
-								<div class="price py-2">
-									<span>152.000</span>
-								</div>
-								<button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-							</div>
-						</div>
-					</div>
-					<div class="item py-2 bg-light">
-						<div class="product font-rale">
-							<a href="#"><img src="./assets/book-1.png" alt="product1" class='img-fluid'></a>
-							<div class="text-center">
-								<h6>Book 1</h6>
-								<div class="rating text-warning font-size-12">
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="fas fa-star "></i></span>
-									<span class="far fa-star "></i></span>
-								</div>
-								<div class="price py-2">
-									<span>152.000</span>
-								</div>
-								<button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-							</div>
-						</div>
-					</div>
+                    <?php } //close foreach function?>
 				<!-- End Owl-carousel -->
 			</div>
 		</section>
