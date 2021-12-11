@@ -176,8 +176,8 @@ $(document).ready(function(){
             }
         }); // closing ajax request
 
-    });
 
+});
 });
 
 

@@ -2,6 +2,11 @@
 ob_start();
 // include header.php file
 include ('header.php');
+include ('helper.php');
+if(isset($_SESSION['userID'])){
+    require ('mysqli_connect.php');
+    $user = get_user_info($con, $_SESSION['userID']);
+}
 ?>
 
 <?php

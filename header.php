@@ -30,17 +30,22 @@
 
     <?php
     // require func file
-    require('func.php')
+    require('func.php');
+    if(!isset($_SESSION['userID'])){
 
     ?>
+
 </head>
 <body>
 <!-- Start #header -->
 <header id='header'>
     <div class="strip d-flex flex-row-reverse px-4 py-1 bg-light">
         <div class="font-rale font-size-14 ">
-            <a href="#" class="px-3 border-right border-left text-dark">Login</a>
-            <a href="#" class="px-3 border-right text-dark">Whishlist (0)</a>
+            <?php echo '<a href="login.php" class="px-3 border-right border-left text-dark">Login</a>';}
+            {
+                echo '<a href="logout.php" class="px-3 border-right border-left text-dark">Logout</a>';
+            }
+            ?>
         </div>
     </div>
 

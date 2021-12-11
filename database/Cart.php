@@ -31,15 +31,15 @@ class Cart
         }
     }
     //to get user_id and item_id and insert into cart table
-    public function addToCart($userid,$itemid){
-        if (isset($userid) && isset($itemid)){
+    public function addToCart($user_id,$item_id, $quantity){
+        if (isset($user_id) && isset($item_id) ){
             $params = array(
-                "user_id" => $userid,
-                "item_id" => $itemid
+                "user_id" => $user_id,
+                "item_id" => $item_id,
+                "quantity" => $quantity
             );
             // insert data into cart
             $result = $this->insertIntoCart($params);
-
             if ($result){
                 // Reload Page
                 header("Location: " . $_SERVER['PHP_SELF']);
@@ -81,15 +81,25 @@ class Cart
     public function saveForLater($item_id = null, $saveTable = "wishlist", $fromTable = "cart"){
         if ($item_id != null){
             $query = "INSERT INTO {$saveTable} SELECT * FROM $fromTable WHERE item_id={$item_id};";
-            $query .= "DELETE FROM {$fromTable} WHERE item_id={$item_id};";
-
+            $query .= "DELETE FROM {$fromTable} WHERE item_id={$item_id}";
             // execute multiple query
             $result = $this->db->con->multi_query($query);
-
             if($result){
-                header("Location :" . $_SERVER['PHP_SELF']);
+                header("Location:" . $_SERVER['PHP_SELF']);
             }
             return $result;
         }
+    }
+    public function calculateCartTotal($cart){
+        $total = 0;
+        foreach($cart as $item){
+            //get qty
+            $qty = 0;
+            $price = 0;
+            //get price
+            $subTotal = $qty * $price;
+            $total += $subTotal;
+        }
+        return $total;
     }
 }
