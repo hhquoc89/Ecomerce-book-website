@@ -31,19 +31,23 @@
     <?php
     // require func file
     require('func.php');
-    if(!isset($_SESSION['userID'])){
 
+   //check user login & get user id
+    $is_user_logged_in = isset($_SESSION['userID']) ? true: false; // day ne
+
+    //end check user login & get user id
     ?>
-
 </head>
 <body>
 <!-- Start #header -->
 <header id='header'>
     <div class="strip d-flex flex-row-reverse px-4 py-1 bg-light">
         <div class="font-rale font-size-14 ">
-            <?php echo '<a href="login.php" class="px-3 border-right border-left text-dark">Login</a>';}
-            {
+            <?php
+            if( $is_user_logged_in ) {
                 echo '<a href="logout.php" class="px-3 border-right border-left text-dark">Logout</a>';
+            }else{
+                echo '<a href="login.php" class="px-3 border-right border-left text-dark">Login</a>';
             }
             ?>
         </div>

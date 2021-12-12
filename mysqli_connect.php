@@ -1,5 +1,5 @@
 <?php
-
+define('SITEURL','http://localhost/Ebook/');
 // define constant variables
 define('DB_NAME', 'ebook');
 define('DB_USER', 'root');

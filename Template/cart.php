@@ -3,11 +3,14 @@
 require ('mysqli_connect.php');
 include ('helper.php');
     session_start();
-    $is_user_logged_in = isset($_SESSION['userID']) ? true: false;
+    //check user login & get user id
+    $is_user_logged_in = isset($_SESSION['userID']) ? true: false; // day ne
     if( !$is_user_logged_in ){
         header("Location: login.php");
     }
     $userID = $_SESSION['userID'];
+    //end check user login & get user id
+
     if($_SERVER['REQUEST_METHOD']=='POST'){
         if(isset($_POST['delete-cart-submit'])){
             $deleted_record = $Cart->deleteCart($_POST['item_id']);

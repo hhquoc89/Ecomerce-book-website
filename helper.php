@@ -1,5 +1,4 @@
 <?php
-
 function validate_input_text($textValue){
     if (!empty($textValue)){
         $trim_text = trim($textValue);

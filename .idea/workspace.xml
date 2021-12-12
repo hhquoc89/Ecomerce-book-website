@@ -75,6 +75,7 @@
       <change afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/mysqli_connect.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-detail.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/order.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/register-process.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
@@ -182,7 +183,7 @@
       <workItem from="1638460294480" duration="4604000" />
       <workItem from="1638501200593" duration="3401000" />
       <workItem from="1638587112938" duration="11954000" />
-      <workItem from="1639120785794" duration="4514000" />
+      <workItem from="1639120785794" duration="10616000" />
     </task>
     <servers />
   </component>

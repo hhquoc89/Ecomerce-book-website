@@ -97,7 +97,7 @@ include ('helper.php')
                         ?>
                         <!-- cart item -->
                         <div class="row border-top py-3 mt-3">
-                            
+
                             <div class="col-sm-2">
                                 <img src="<?php echo $item['item_image'] ?? "./assets/products/1.png" ?>" style="height: 120px;" alt="cart1" class="img-fluid">
                             </div>

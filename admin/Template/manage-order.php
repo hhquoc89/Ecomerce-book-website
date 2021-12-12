@@ -15,7 +15,6 @@
         <table class="tbl-full">
             <tr>
                 <th>S.N</th>
-                <th>Customer name</th>
                 <th>Total Bill</th>
                 <th>Created Date</th>
                 <th>Status</th>
