@@ -32,6 +32,7 @@
     // require func file
     require('func.php');
 
+    session_start();
    //check user login & get user id
     $is_user_logged_in = isset($_SESSION['userID']) ? true: false; // day ne
 
@@ -46,6 +47,7 @@
             <?php
             if( $is_user_logged_in ) {
                 echo '<a href="logout.php" class="px-3 border-right border-left text-dark">Logout</a>';
+                echo '<a href="user.php" class="px-3 border-right border-left text-dark">My Account</a>';
             }else{
                 echo '<a href="login.php" class="px-3 border-right border-left text-dark">Login</a>';
             }

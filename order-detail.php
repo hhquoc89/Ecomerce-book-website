@@ -1,7 +1,7 @@
 <?php
 ob_start();
 require ('mysqli_connect.php');
-session_start();
+
 include ('header.php');
 
 include ('helper.php');

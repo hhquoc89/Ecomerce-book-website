@@ -15,6 +15,7 @@
         <table class="tbl-full">
             <tr>
                 <th>S.N</th>
+                <th>Name</th>
                 <th>Total Bill</th>
                 <th>Created Date</th>
                 <th>Status</th>
@@ -73,7 +74,7 @@
                         <td>
                             <a href="<?php echo SITEURL;?>admin/order_item.php?id=<?php echo $id;?>" class="btn-primary">View </a>
                         </td>
-                        <br>
+
                         <td>
                             <a href="<?php echo SITEURL;?>admin/update_order.php?id=<?php echo $id;?>" class="btn-secondary">Update </a>
                         </td>
