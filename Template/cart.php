@@ -2,7 +2,7 @@
 <?php
 require ('mysqli_connect.php');
 include ('helper.php');
-    session_start();
+    
     //check user login & get user id
     $is_user_logged_in = isset($_SESSION['userID']) ? true: false; // day ne
     if( !$is_user_logged_in ){

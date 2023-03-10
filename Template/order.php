@@ -5,7 +5,7 @@ include ('helper.php')
 ?>
 
 <?php
-    session_start();
+    
     $is_user_logged_in = isset($_SESSION['userID']) ? true: false;
     if( !$is_user_logged_in ){
         header("Location: login.php");
